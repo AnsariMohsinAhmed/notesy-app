@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <>
-            <div>All rights reserved &copy; {(new Date().getFullYear())}</div>
+            <div className="text-center p-5 bg-light">All rights reserved &copy; {(new Date().getFullYear())}</div>
         </>
     )
 }
