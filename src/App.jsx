@@ -4,12 +4,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from './pages/Home'
 import About from './pages/About'
 import NotFound from './pages/NotFound'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
     <>
       <Router>
         <Header />
+        <Navbar />
 
         <div className="container my-5">
           <Routes>
