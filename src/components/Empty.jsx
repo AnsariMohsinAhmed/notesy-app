@@ -1,9 +1,10 @@
 import { FaDove } from "react-icons/fa";
+import { PropTypes } from "prop-types";
 
-const Empty = () => {
+const Empty = ({ notes }) => {
     return (
         <>
-            { false && (
+            { notes && notes.length === 0 && (
                 <div className="text-center p-3 text-muted">
                     <h1 className="display-4 text-secondary">
                         <FaDove className="me-2" />
@@ -16,3 +17,7 @@ const Empty = () => {
 }
 
 export default Empty;
+
+Empty.propTypes = {
+    notes: PropTypes.array,
+};
