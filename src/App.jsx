@@ -1,39 +1,26 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Form from './components/Form'
-import Empty from './components/Empty'
-import List from './components/List'
-import { useState } from "react"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Home from './pages/Home'
+import About from './pages/About'
+import NotFound from './pages/NotFound'
 
 function App() {
-  const [notes, setNotes] = useState([])
-  const add = newNotes => {
-    setNotes([newNotes, ...notes])
-  }
-
-  const remove = id => {
-    setNotes(notes.filter(i => i.id !== id))
-  }
-
-  const getAll = notes => {
-    setNotes(notes)
-  }
-
   return (
     <>
-      <Header />
+      <Router>
+        <Header />
 
-      <div className="container my-5">
-        <div className="row">
-          <div className="col">
-            <Form add={add} />
-            <List notes={notes} remove={remove} getAll={getAll} />
-            <Empty notes={notes} />
-          </div>
+        <div className="container my-5">
+          <Routes>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='/about' element={<About />}></Route>
+            <Route path='/*' element={<NotFound />}></Route>
+          </Routes>
         </div>
-      </div>
 
-      <Footer />
+        <Footer />
+      </Router>
     </>
   )
 }
