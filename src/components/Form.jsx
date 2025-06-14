@@ -1,7 +1,7 @@
 import { FaPlus } from "react-icons/fa";
 import { PropTypes } from "prop-types";
 import { useState } from "react";
-import { v4 as uuid } from "uuid";
+import axios from "axios";
 
 const Form = ({ add }) => {
     const [note, setNote] = useState('')
@@ -10,14 +10,15 @@ const Form = ({ add }) => {
         setNote(event.target.value)
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         try {
             event.preventDefault()
             if (note === '') {
                 window.alert('Please enter note')
                 return
             }
-            add({ id: uuid(), note })
+            const response = await axios.post('https://notesy-app-api.onrender.com/create-note', { note });
+            add({ ID: response.data.id, Note: response.data.note });
         } catch (err) {
             window.alert('Error occurred: ', err.message)
         } finally {

@@ -4,7 +4,7 @@ import { FaTrash } from "react-icons/fa";
 const Item = ({ note, remove }) => {
     const handleRemove = () => {
         try {
-            remove(note.id)
+            remove(note.ID)
         } catch (err) {
             window.alert('Error occurred: ', err.message)
         }
@@ -15,7 +15,7 @@ const Item = ({ note, remove }) => {
                 <div className="card-body">
                     <p className="card-text">
                         <span className="d-flex justify-content-between align-items-center">
-                            <span>{note.note}</span>
+                            <span>{note ? `${note.Note}` : "No data"}</span>
                             <button type="button" className="btn btn-light ms-3" onClick={handleRemove}>
                                 <FaTrash size={'1rem'} className="text-danger" />
                             </button>

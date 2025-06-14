@@ -10,7 +10,7 @@ const Home = () => {
   }
 
   const remove = id => {
-    setNotes(notes.filter(i => i.id !== id))
+    setNotes(notes.filter(i => i.ID !== id))
   }
 
   const getAll = notes => {
