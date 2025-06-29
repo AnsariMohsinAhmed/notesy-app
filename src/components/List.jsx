@@ -1,7 +1,8 @@
 import Item from "./Item";
 import { PropTypes } from "prop-types";
 import { useEffect } from "react";
-import axios from 'axios';
+import { ENDPOINTS } from "../constants";
+import api from "../helpers/api";
 
 const List = ({ notes, remove, getAll }) => {
     useEffect(() => {
@@ -10,10 +11,10 @@ const List = ({ notes, remove, getAll }) => {
 
     const fetchAllNotes = async() => {
         try {
-            const response = await axios.get('https://notesy-app-api.onrender.com/notes');
+            const response = await api.get(ENDPOINTS.createnote);
             getAll(response.data);
         } catch (error) {
-            window.alert('Error while fetching notes :- ', error.message);
+            window.alert(`Error while fetching notes :- ${error.message}`);
         }
     }
 

@@ -1,7 +1,8 @@
 import { FaPlus } from "react-icons/fa";
 import { PropTypes } from "prop-types";
 import { useState } from "react";
-import axios from "axios";
+import { ENDPOINTS } from "../constants";
+import api from "../helpers/api";
 
 const Form = ({ add }) => {
     const [note, setNote] = useState('')
@@ -17,10 +18,10 @@ const Form = ({ add }) => {
                 window.alert('Please enter note')
                 return
             }
-            const response = await axios.post('https://notesy-app-api.onrender.com/create-note', { note });
+            const response = await api.post(ENDPOINTS.createnote, { note });
             add({ ID: response.data.id, Note: response.data.note });
         } catch (err) {
-            window.alert('Error occurred: ', err.message)
+            window.alert(`Error occurred: ${err.message}`);
         } finally {
             setNote('')
         }
