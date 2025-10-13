@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types'
 import { FaTrash } from "react-icons/fa";
+import api from '../helpers/api';
+import { ENDPOINTS } from '../constants';
 
 const Item = ({ note, remove }) => {
-    const handleRemove = () => {
+    const handleRemove = async() => {
         try {
-            remove(note.ID)
+            await api.delete(`${ENDPOINTS.deletenote}/${note.ID}`);
+            remove(note.ID);
         } catch (err) {
             window.alert('Error occurred: ', err.message)
         }

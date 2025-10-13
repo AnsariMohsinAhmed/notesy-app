@@ -5,5 +5,6 @@ export const API_BASE_URL = {
 
 export const ENDPOINTS = {
     getallnotes: '/notes',
-    createnote: '/create-note'
+    createnote: '/create-note',
+    deletenote: '/deleteNote'
 };
