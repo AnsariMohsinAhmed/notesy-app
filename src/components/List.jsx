@@ -11,7 +11,8 @@ const List = ({ notes, remove, getAll }) => {
 
     const fetchAllNotes = async() => {
         try {
-            const response = await api.get(ENDPOINTS.getallnotes);
+            const response = await api.get(ENDPOINTS.getAllNotesWebAPI);
+            console.log('response :- ', response);
             getAll(response.data);
         } catch (error) {
             window.alert(`Error while fetching notes :- ${error.message}`);
